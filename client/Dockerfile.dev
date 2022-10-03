@@ -1,0 +1,30 @@
+# ARG NODE_VERSION=16.14-alpine
+
+FROM node:16-alpine3.12
+
+LABEL version="1.0"
+LABEL description="React frontend for the real estate API"
+
+WORKDIR /app
+
+COPY /package*.json ./
+
+RUN npm install
+
+COPY . .
+
+# FROM node:${NODE_VERSION} as node
+
+# FROM node as client-local-build
+
+# ARG APP_HOME=/app
+
+# WORKDIR ${APP_HOME}
+
+# COPY ./package*.json .
+
+# RUN npm install
+
+# COPY . ${APP_HOME}
+
+CMD ["npm","run","start"]
